@@ -56,7 +56,10 @@ def main():
 
     if not episode:
         print(
-            f"Could not determine episode ID from '{input_path.name}'. Please provide it as an argument."
+            (
+                f"Could not determine episode ID from '{input_path.name}'. "
+                "Please provide it as an argument."
+            )
         )
         sys.exit(1)
 
@@ -100,7 +103,13 @@ def main():
 
         start = chapters[i]["start"]
         end = chapters[i + 1]["start"] - 1
-        metadata_output += f"\n[CHAPTER]\nTIMEBASE=1/1000\nSTART={start}\nEND={end}\ntitle={chapters[i]['title']}\n"
+        metadata_output += (
+            "\n[CHAPTER]\n"
+            "TIMEBASE=1/1000\n"
+            f"START={start}\n"
+            f"END={end}\n"
+            f"title={chapters[i]['title']}\n"
+        )
 
     # Append to extracted metadata
     with open(header_file, "a") as f:
