@@ -1,0 +1,7 @@
+[project]
+name = "FFmpeg Chapters"
+version = "0.1.0"
+description = "Add chapter markers to a video file using FFmpeg and a simple text file."
+readme = "README.md"
+requires-python = "==3.12"
+dependencies = []
