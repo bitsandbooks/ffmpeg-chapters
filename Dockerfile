@@ -14,7 +14,7 @@ WORKDIR /data
 
 # Copy Python script into the container
 # DON'T FORGET TO LINT IT FIRST!
-COPY makechapters.py .
+COPY makechapters.py /app/
 
 # Define the default command that runs when the container starts
 ENTRYPOINT ["python", "/app/makechapters.py"]
