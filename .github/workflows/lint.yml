@@ -1,0 +1,40 @@
+name: Linting Pipeline
+
+# This triggers the workflow on any push to the trunk branch
+on:
+  push:
+    branches: [ "trunk" ]
+  pull_request:
+    branches: [ "trunk" ]
+
+jobs:
+  lint-and-format:
+    # This spins up a fresh Ubuntu runner
+    runs-on: ubuntu-latest
+
+    steps:
+    # Step 1: Grab your code from the repository
+    - name: Check out repository code
+      uses: actions/checkout@v4
+
+    # Step 2: Install Python
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: "3.12" # Feel free to change this to the version you run locally
+
+    # Step 3: Install the linting and formatting tools
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install black flake8
+
+    # Step 4: Run Black (The Formatter)
+    # The --check flag tells Black to fail the pipeline if the code isn't formatted correctly
+    - name: Check code formatting with Black
+      run: black --check .
+
+    # Step 5: Run Flake8 (The Linter)
+    # This checks for syntax errors, undefined names, and standard code hygiene
+    - name: Lint with Flake8
+      run: flake8 . --count --show-source --statistics
