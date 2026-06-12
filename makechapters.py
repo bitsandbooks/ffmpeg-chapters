@@ -14,7 +14,7 @@ from pathlib import Path
 BACKUP_FOLDER = Path("./originals")
 HEADERS_FOLDER = Path("./headers")
 HEADERS_PREFIX = "FFMETA-MHV"
-OUT_FOLDER = Path("./mhv")
+OUT_FOLDER = Path("./output")
 CHAPTERS_SOURCE = "chapters.txt"
 # The CHAPTERS_SOURCE file should have one chapter on each line, in the format:
 # h:mm:ss Chapter Title
