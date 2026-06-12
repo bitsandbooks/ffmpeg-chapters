@@ -40,4 +40,4 @@ jobs:
     # Step 5: Run Flake8 (The Linter)
     # This checks for syntax errors, undefined names, and standard code hygiene
     - name: Lint with Flake8
-      run: flake8 . --count --show-source --statistics
+      run: flake8 . --count --show-source --statistics --max-line-length=88
