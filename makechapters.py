@@ -16,8 +16,9 @@ HEADERS_FOLDER = Path("./headers")
 HEADERS_PREFIX = "FFMETA-MHV"
 OUT_FOLDER = Path("./mhv")
 CHAPTERS_SOURCE = "chapters.txt"
-# The CHAPTERS_SOURCE file should have one chapter on each line,in the format:
-# "h:mm:ss Chapter Title" (for example, "0:00:00 Introduction")
+# The CHAPTERS_SOURCE file should have one chapter on each line, in the format:
+# h:mm:ss Chapter Title
+# (for example, "0:00:00 Opening Credits", or "1:23:45 Closing Credits")
 # The final line in the file must be set to the length of the video and 
 # given the chapter title "END".
 
