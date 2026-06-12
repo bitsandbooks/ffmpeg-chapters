@@ -73,11 +73,11 @@ def main():
     header_file = HEADERS_FOLDER / f"{HEADERS_PREFIX}-{episode}.txt"
     output_path = OUT_FOLDER / input_path.name
 
-    # 3. Backup and Metadata Extraction [cite: 1]
+    # 3. Backup and Metadata Extraction
     input_path.rename(backup_path)
     run_ffmpeg(["-i", str(backup_path), "-f", "ffmetadata", str(header_file), "-y"])
 
-    # 4. Parse Chapters [cite: 2, 3]
+    # 4. Parse Chapters
     chapters = []
     # This regex handles the '' prefix in your text file
     time_regex = re.compile(r"(\d):(\d{2}):(\d{2})\s+(.*)")
@@ -95,7 +95,7 @@ def main():
                 timestamp_ms = ((int(h) * 3600) + (int(m) * 60) + int(s)) * 1000
                 chapters.append({"title": title.strip(), "start": timestamp_ms})
 
-    # 5. Generate Metadata String [cite: 3]
+    # 5. Generate Metadata String
     metadata_output = ""
     for i in range(len(chapters) - 1):
         if chapters[i]["title"].upper() == "END":
@@ -115,7 +115,7 @@ def main():
     with open(header_file, "a") as f:
         f.write(metadata_output)
 
-    # 6. Final Mux [cite: 1]
+    # 6. Final Mux
     print("Writing final file with chapters...")
     run_ffmpeg(
         [
